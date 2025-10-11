@@ -1,5 +1,6 @@
 extends Node2D
-func _ready(): # Função chamada no começo da cena (ou quando ela entra em outra cena)
+func _ready():
 	pass
 func _process(_delta):
-	self.position = get_global_mouse_position()
+	self.position = get_global_mouse_position() # Pega a posição do mouse, 
+	# e transforma na posição do player na tela.
