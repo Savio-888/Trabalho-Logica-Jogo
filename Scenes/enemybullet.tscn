@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4juin13qwaqi"]
+
+[ext_resource type="Script" uid="uid://b1wg1h1hv1usl" path="res://Scripts/Inimigos/enemybullet.gd" id="1_0y01j"]
+[ext_resource type="Texture2D" uid="uid://bjct7or27j0h4" path="res://icon.svg" id="2_yhite"]
+
+[node name="Bullet" type="Node2D"]
+script = ExtResource("1_0y01j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_yhite")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-6, -6)
+target_position = Vector2(12, 12)
+collide_with_areas = true

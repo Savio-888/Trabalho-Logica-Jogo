@@ -1,10 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://blo6oavb3cb2x"]
+[gd_scene load_steps=7 format=3 uid="uid://blo6oavb3cb2x"]
 
 [ext_resource type="Script" uid="uid://beepsxmdoy3q2" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://bjct7or27j0h4" path="res://icon.svg" id="2_6t5aa"]
+[ext_resource type="Script" uid="uid://b5me61bpbpi5l" path="res://Scripts/HUD/hudplayer.gd" id="3_vgqql"]
+[ext_resource type="FontFile" uid="uid://dbysrtfs0r7n1" path="res://Dream MMA.ttf" id="4_fkybt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgqql"]
 size = Vector2(38, 38)
+
+[sub_resource type="LabelSettings" id="LabelSettings_x3wgy"]
+font = ExtResource("4_fkybt")
+font_size = 36
+font_color = Color(0, 0, 0, 1)
 
 [node name="Player" type="Node2D"]
 scale = Vector2(0.5, 0.5)
@@ -19,3 +26,30 @@ texture = ExtResource("2_6t5aa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_vgqql")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("3_vgqql")
+
+[node name="BarradeVida" type="MarginContainer" parent="HUD"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="UI" type="Control" parent="HUD/BarradeVida"]
+layout_mode = 2
+
+[node name="barravida" type="Label" parent="HUD/BarradeVida/UI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "3"
+label_settings = SubResource("LabelSettings_x3wgy")
+horizontal_alignment = 1
+vertical_alignment = 1

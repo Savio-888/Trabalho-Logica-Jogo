@@ -11,8 +11,10 @@ script = ExtResource("1_gl6un")
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="Player" parent="." instance=ExtResource("2_j5yw3")]
+[node name="Objects" type="Node2D" parent="."]
 
-[node name="Spawner" parent="." instance=ExtResource("3_j5yw3")]
+[node name="Player" parent="Objects" instance=ExtResource("2_j5yw3")]
+
+[node name="Spawner" parent="Objects" instance=ExtResource("3_j5yw3")]
 position = Vector2(1177, -70)
-rotation = 0.68258613
+rotation = 0.6825861
