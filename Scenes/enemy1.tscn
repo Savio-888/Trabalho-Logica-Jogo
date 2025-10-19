@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://gph8vhk0rr33"]
+[gd_scene load_steps=4 format=3 uid="uid://gph8vhk0rr33"]
 
 [ext_resource type="Script" uid="uid://jpo2n12c5apy" path="res://Scripts/Inimigos/enemy1.gd" id="1_mxdow"]
 [ext_resource type="Texture2D" uid="uid://bjct7or27j0h4" path="res://icon.svg" id="2_afpow"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mxdow"]
+size = Vector2(62, 62)
+
 [node name="Enemy1" type="Node2D"]
-scale = Vector2(0.5, 0.5)
 script = ExtResource("1_mxdow")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -13,5 +15,11 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_afpow")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_mxdow")
 
 [connection signal="timeout" from="Timer" to="." method="timeout"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://724vin7uxytk"]
+
+[ext_resource type="Script" uid="uid://mrjes5t6tcsq" path="res://Scripts/playerbullet.gd" id="1_3lnry"]
+[ext_resource type="Texture2D" uid="uid://bjct7or27j0h4" path="res://icon.svg" id="2_ck7yy"]
+
+[node name="Playerbullet" type="Node2D"]
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_3lnry")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_ck7yy")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-16.666668, -16.666668)
+target_position = Vector2(33.333336, 33.333336)
+collide_with_areas = true
