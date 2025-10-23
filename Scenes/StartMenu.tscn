@@ -1,0 +1,96 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1akr5snbqtc0"]
+
+[ext_resource type="FontFile" uid="uid://dbysrtfs0r7n1" path="res://Dream MMA.ttf" id="1_dvnd1"]
+[ext_resource type="Script" uid="uid://ddpawx0rsgms2" path="res://Scripts/HUD/start_menu.gd" id="1_xtte2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xtte2"]
+font = ExtResource("1_dvnd1")
+font_size = 100
+font_color = Color(0, 0, 0, 1)
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xtte2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "biome hell"
+label_settings = SubResource("LabelSettings_xtte2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="startbutton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start"
+
+[node name="menu" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = 37.0
+offset_right = 23.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Menu
+"
+
+[node name="exit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = 81.0
+offset_right = 23.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit"
+
+[connection signal="pressed" from="startbutton" to="." method="_on_startbutton_pressed"]
+[connection signal="pressed" from="menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

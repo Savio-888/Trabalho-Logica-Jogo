@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bh14wk57ypkmy"]
+[gd_scene load_steps=5 format=3 uid="uid://bh14wk57ypkmy"]
 
+[ext_resource type="Script" uid="uid://btnl302w7eedp" path="res://Scripts/HUD/game_over.gd" id="1_k52d1"]
 [ext_resource type="FontFile" uid="uid://dbysrtfs0r7n1" path="res://Dream MMA.ttf" id="1_m5628"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_k52d1"]
@@ -9,9 +10,17 @@ font_size = 120
 [sub_resource type="LabelSettings" id="LabelSettings_m5628"]
 font = ExtResource("1_m5628")
 
-[node name="GameOver" type="CanvasLayer"]
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k52d1")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -20,6 +29,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -39,6 +49,7 @@ label_settings = SubResource("LabelSettings_k52d1")
 
 [node name="tryagain" type="Button" parent="."]
 self_modulate = Color(0.012617188, 0.012617188, 0.012617188, 1)
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -67,8 +78,9 @@ grow_vertical = 2
 text = "try again"
 label_settings = SubResource("LabelSettings_m5628")
 
-[node name="close" type="Button" parent="."]
+[node name="gotostartmenu" type="Button" parent="."]
 self_modulate = Color(0.012617188, 0.012617188, 0.012617188, 1)
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -81,7 +93,7 @@ offset_bottom = 195.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="close"]
+[node name="Label" type="Label" parent="gotostartmenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -96,3 +108,6 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "start menu"
 label_settings = SubResource("LabelSettings_m5628")
+
+[connection signal="pressed" from="tryagain" to="." method="_on_tryagain_pressed"]
+[connection signal="pressed" from="gotostartmenu" to="." method="_on_close_pressed"]

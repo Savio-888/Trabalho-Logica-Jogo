@@ -6,25 +6,22 @@ signal health_changed(value: int, max_value: int)
 @export var speed: float = 5.0
 var health: int = max_health
 var bullet_scene = preload("res://Scenes/playerbullet.tscn")
+var horizontal : float
+var vertical: float
 
 func _ready():
 	pass
 func _process(_delta):
+	horizontal = Input.get_action_strength("right") - Input.get_action_strength("left")
+	vertical = Input.get_action_strength("down") - Input.get_action_strength("up")
 	# Rotação do Player
-	look_at(get_global_mouse_position())
+	look_at(get_global_mouse_position()) # Pega a posição do mouse, e faz o personagem olhar em direção a ele.
 	rotation_degrees = wrap(rotation_degrees, 0, 360)
 	
 	# Inputs de movimentação:
-	if Input.is_action_pressed('up'): # Seta pra cima ou W
-		self.position.y -= speed
-	if Input.is_action_pressed('down'): # Seta pra baixo ou S
-		self.position.y += speed
-	if Input.is_action_pressed('left'): # Seta pra esquerda ou A
-		self.position.x -= speed
-	if Input.is_action_pressed('right'): # Seta pra Direita ou D
-		self.position.x += speed
-	
-	if Input.is_action_just_pressed('shoot'):
+	position += Vector2(horizontal*speed, vertical*speed)
+	# Ações do Player
+	if Input.is_action_just_pressed('shoot'): # Projétil
 		var b = bullet_scene.instantiate()
 		b.position = self.position
 		get_parent().add_child(b)
