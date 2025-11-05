@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://d4k7sad3njhv8"]
+
+[ext_resource type="Script" uid="uid://dpmbpljth0ehi" path="res://Scripts/fases/tutorial.gd" id="1_xxqic"]
+[ext_resource type="PackedScene" uid="uid://blo6oavb3cb2x" path="res://Scenes/player.tscn" id="2_ua8j6"]
+[ext_resource type="PackedScene" uid="uid://ogask02mi3ts" path="res://Scenes/Spawner.tscn" id="3_g6aqq"]
+[ext_resource type="FontFile" uid="uid://dbysrtfs0r7n1" path="res://Dream MMA.ttf" id="4_ua8j6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g6aqq"]
+font = ExtResource("4_ua8j6")
+font_size = 18
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ua8j6"]
+font = ExtResource("4_ua8j6")
+font_size = 18
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_u2a0r"]
+font = ExtResource("4_ua8j6")
+font_size = 10
+font_color = Color(0, 0, 0, 1)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_xxqic")
+next_scene = "res://Scenes/StartMenu.tscn"
+
+[node name="Plano de Fundo" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Player" parent="." instance=ExtResource("2_ua8j6")]
+position = Vector2(576, 328)
+
+[node name="Spawner" parent="." instance=ExtResource("3_g6aqq")]
+process_mode = 4
+position = Vector2(1177, -70)
+rotation = 0.6825861
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 510.0
+offset_top = 11.0
+offset_right = 1145.0
+offset_bottom = 58.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+
+[node name="andar" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "you can move by using the arrows on your 
+keyboard, or by pressing w, a, s, d"
+label_settings = SubResource("LabelSettings_g6aqq")
+
+[node name="atirar" type="Label" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+text = "to shoot, aim with your mouse"
+label_settings = SubResource("LabelSettings_ua8j6")
+
+[node name="inimigos" type="Label" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+text = "enemies will try to shoot toward you! if you get hit 6 times, you character dies, and you'll be taken to the game over screen."
+label_settings = SubResource("LabelSettings_u2a0r")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

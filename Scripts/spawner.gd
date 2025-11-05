@@ -1,16 +1,20 @@
 extends Node2D
 
-var spawn_time = 4
-var enemy_scene = load("res://Scenes/enemy1.tscn")
+@export var spawn_time: float = 4.0
+@export var enemy_scene: Resource = load("res://Scenes/inimigos/enemy1.tscn")
+@export var Erase_Spawner_After: float = 10.0
 
 func _ready():
 	$Timer.set_wait_time(spawn_time)
 	$Timer.start()
-	pass
-func _process(_delta):
-	pass
+	$Timer_spawner.set_wait_time(Erase_Spawner_After)
+	$Timer_spawner.start()
+	
 func timeout() -> void:
 	var e = enemy_scene.instantiate()
 	e.position = self.position
 	e.rotation = self.rotation
-	get_parent().add_child(e)
+	owner.add_child(e)
+
+func timer_spawner_timeout() -> void:
+	queue_free()

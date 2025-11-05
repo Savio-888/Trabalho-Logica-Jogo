@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgqfd43fxmtyo"]
+
+[ext_resource type="AudioStream" uid="uid://sw14vrad5dj3" path="res://Music/Trilha-Lobby.mp3" id="1_wrh0v"]
+
+[node name="BgMusic" type="AudioStreamPlayer"]
+stream = ExtResource("1_wrh0v")
+volume_db = -30.578
+autoplay = true

@@ -1,7 +1,7 @@
 extends Node2D
 
 # Script base da bala dos inimigos.
-var dir = Vector2(3, 0)
+var dir = Vector2(5, 5)
 
 func _ready():
 	pass

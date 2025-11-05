@@ -25,3 +25,5 @@ rotation = -0.76983094
 [node name="Spawner3" parent="." instance=ExtResource("3_j5yw3")]
 position = Vector2(31.99997, 696)
 rotation = -2.2644866
+
+[node name="Timer" type="Timer" parent="."]

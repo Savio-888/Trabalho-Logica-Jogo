@@ -1,11 +1,11 @@
 extends Node2D
 
-var speed = 2000
+var speed = 5000
 func _ready():
-	pass
+	look_at(get_global_mouse_position())
 
 func _process(delta):
-	self.position += transform.x * speed * delta # Define posição e rotação, baseado na direção em que foi lançado.
+	self.position += transform.x * speed * delta # Define posição, baseado na direção em que foi lançado.
 	if($RayCast2D.is_colliding()): # Checa se o Raycast (colisão da bala) entrou em contato com alguma outra coisa (o player).
 		var collid = $RayCast2D.get_collider().get_parent()
 		if collid.type == "ENEMY":
