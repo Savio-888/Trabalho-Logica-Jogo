@@ -1,10 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://v5pu5cr770ar"]
+[gd_scene load_steps=7 format=3 uid="uid://v5pu5cr770ar"]
 
 [ext_resource type="Script" uid="uid://bs0n4jyae1bol" path="res://Scripts/fases/fase3.gd" id="1_msq4h"]
-[ext_resource type="PackedScene" uid="uid://ogask02mi3ts" path="res://Scenes/Spawner.tscn" id="2_wssjo"]
-[ext_resource type="PackedScene" uid="uid://gph8vhk0rr33" path="res://Scenes/inimigos/enemy1.tscn" id="3_msq4h"]
+[ext_resource type="Texture2D" uid="uid://c1tqtnw6wujch" path="res://Sprites/WhatsApp Image 2025-11-07 at 01.00.49.jpeg" id="2_xg346"]
 [ext_resource type="PackedScene" uid="uid://blo6oavb3cb2x" path="res://Scenes/player.tscn" id="4_f3v33"]
-[ext_resource type="PackedScene" uid="uid://pw7226ebjrqg" path="res://Scenes/inimigos/cobra.tscn" id="4_msq4h"]
 [ext_resource type="FontFile" uid="uid://dbysrtfs0r7n1" path="res://Dream MMA.ttf" id="5_tiol1"]
 [ext_resource type="PackedScene" uid="uid://birqxpnkps7gj" path="res://Scenes/inimigos/Urso.tscn" id="6_wssjo"]
 
@@ -15,25 +13,11 @@ font_color = Color(0, 0, 0, 1)
 [node name="Game" type="Node2D"]
 script = ExtResource("1_msq4h")
 
-[node name="Spawner" parent="." instance=ExtResource("2_wssjo")]
-unique_name_in_owner = true
-position = Vector2(80, -48)
-spawn_time = 15.0
-enemy_scene = ExtResource("3_msq4h")
-Erase_Spawner_After = 120.0
-
-[node name="Spawner2" parent="." instance=ExtResource("2_wssjo")]
-unique_name_in_owner = true
-position = Vector2(1264, 592)
-rotation = 1.5707964
-spawn_time = 15.0
-enemy_scene = ExtResource("4_msq4h")
-Erase_Spawner_After = 120.0
-
-[node name="Plano de Fundo" type="ColorRect" parent="."]
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0.5529412, 1, 1, 1)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.7254902, 0.9137255, 1, 1)
+position = Vector2(520, 992)
+scale = Vector2(2, 2)
+texture = ExtResource("2_xg346")
 
 [node name="Player" parent="." instance=ExtResource("4_f3v33")]
 position = Vector2(576, 328)
@@ -49,3 +33,32 @@ offset_right = 1110.0
 offset_bottom = 143.0
 text = "stage 3 complete! well done! thanks for playing the game. going to start screen..."
 label_settings = SubResource("LabelSettings_selro")
+
+[node name="Timer_spawner1" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="Timer_spawner2" type="Timer" parent="."]
+wait_time = 20.0
+autostart = true
+
+[node name="Spawn" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(224, -32)
+
+[node name="Spawn2" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(568, -32)
+
+[node name="Spawn3" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(840, -32)
+
+[node name="Spawn4" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(840, 672)
+
+[node name="Spawn5" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(568, 672)
+
+[node name="Spawn6" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(280, 680)
+
+[connection signal="timeout" from="Timer_spawner1" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer_spawner2" to="." method="_on_timer2_timeout"]

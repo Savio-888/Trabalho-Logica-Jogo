@@ -20,9 +20,19 @@ config/icon="res://icon.svg"
 Scenemanager="*res://Scripts/scenemanager.gd"
 BgMusic="*res://Scenes/bg_music.tscn"
 
+[display]
+
+window/size/resizable=false
+window/size/maximize_disabled=true
+window/stretch/mode="viewport"
+
 [editor]
 
 movie_writer/movie_file="C:/Users/Sávio/Documents/bullet-hellzin/Gravações/gravacao4.avi"
+
+[global_group]
+
+spawn=""
 
 [input]
 

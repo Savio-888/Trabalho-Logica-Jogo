@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://ycrpjmcd55tt"]
+
+[ext_resource type="Script" uid="uid://jr2efoulhmef" path="res://Scripts/Inimigos/tigre.gd" id="1_54die"]
+[ext_resource type="Texture2D" uid="uid://dclg6nb2jbt4h" path="res://Sprites/tigre.png" id="2_nrm0l"]
+[ext_resource type="PackedScene" uid="uid://bn5oyejw6eey" path="res://Scenes/barra.tscn" id="2_ucipg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ucipg"]
+size = Vector2(45, 22)
+
+[node name="Tigre" type="Node2D" groups=["enemy"]]
+script = ExtResource("1_54die")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-9.536743e-07, -1.9073486e-06)
+scale = Vector2(3, 3)
+texture = ExtResource("2_nrm0l")
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_ucipg")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Barra" parent="." node_paths=PackedStringArray("character") instance=ExtResource("2_ucipg")]
+visible = false
+offset_left = -32.0
+offset_top = 32.0
+offset_right = 32.0
+offset_bottom = 42.0
+character = NodePath("..")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

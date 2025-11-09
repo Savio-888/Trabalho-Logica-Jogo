@@ -1,18 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4juin13qwaqi"]
+[gd_scene load_steps=4 format=3 uid="uid://lff38o78cqlm"]
 
-[ext_resource type="Script" uid="uid://b1wg1h1hv1usl" path="res://Scripts/Inimigos/enemybullet.gd" id="1_0y01j"]
-[ext_resource type="Texture2D" uid="uid://bjct7or27j0h4" path="res://icon.svg" id="2_yhite"]
+[ext_resource type="Script" uid="uid://6f2ol0mx1lmy" path="res://Scripts/ursobullet.gd" id="1_lrvd5"]
+[ext_resource type="Texture2D" uid="uid://bjct7or27j0h4" path="res://icon.svg" id="2_jn8kw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0y01j"]
 size = Vector2(12, 12)
 
 [node name="Bullet" type="Node2D"]
-script = ExtResource("1_0y01j")
+script = ExtResource("1_lrvd5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_yhite")
+texture = ExtResource("2_jn8kw")
 
 [node name="Area2D" type="Area2D" parent="."]
 

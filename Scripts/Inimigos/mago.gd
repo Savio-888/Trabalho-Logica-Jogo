@@ -1,7 +1,6 @@
 extends Node2D
 
-# Script base do primeiro inimigo do jogo. Conforme eu for criando mais inimigos
-# eu vou mudando o script. Mas essa é a base.
+# Script base do mago.
 
 var bullet_scene = preload("res://Scenes/enemybullet.tscn")
 var speed = 250
@@ -10,8 +9,8 @@ var type = "ENEMY"
 var player_pos
 var target_pos
 @export var bullet_speed: float = 10
-@export var bullet_spawn_time: float = 2
-@export var max_health: int = 1
+@export var bullet_spawn_time: float = 1
+@export var max_health: int = 2
 var health: int = max_health
 func _ready():
 	$Timer.set_wait_time(bullet_spawn_time)
@@ -36,3 +35,4 @@ func timeout() -> void:
 
 func damage(value: int):
 	health = clamp(health - value, 0, max_health)
+	$Barra.visible = true

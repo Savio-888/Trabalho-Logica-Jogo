@@ -1,26 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://gph8vhk0rr33"]
+[gd_scene load_steps=5 format=3 uid="uid://gph8vhk0rr33"]
 
 [ext_resource type="Script" uid="uid://jpo2n12c5apy" path="res://Scripts/Inimigos/mago.gd" id="1_mxdow"]
 [ext_resource type="Texture2D" uid="uid://baltpsi8locl1" path="res://Sprites/mago_inimigo.png" id="2_ltttk"]
+[ext_resource type="PackedScene" uid="uid://bn5oyejw6eey" path="res://Scenes/barra.tscn" id="3_fxxku"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mxdow"]
-size = Vector2(32, 40)
+size = Vector2(24, 32)
 
-[node name="Enemy1" type="Node2D"]
+[node name="Enemy1" type="Node2D" groups=["enemy"]]
 script = ExtResource("1_mxdow")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.60105646, 0, 0.2574404, 1)
 position = Vector2(2.861023e-06, 2.861023e-06)
+rotation = 1.5707964
 scale = Vector2(2, 2)
 texture = ExtResource("2_ltttk")
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -4)
+position = Vector2(4, 0)
 shape = SubResource("RectangleShape2D_mxdow")
+
+[node name="Barra" parent="." node_paths=PackedStringArray("character") instance=ExtResource("3_fxxku")]
+visible = false
+offset_left = -28.0
+offset_top = 24.0
+offset_right = 36.0
+offset_bottom = 34.0
+character = NodePath("..")
 
 [connection signal="timeout" from="Timer" to="." method="timeout"]

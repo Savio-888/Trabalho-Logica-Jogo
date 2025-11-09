@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bomuwmu8yfq6y"]
+[gd_scene load_steps=7 format=3 uid="uid://bomuwmu8yfq6y"]
 
 [ext_resource type="Script" uid="uid://cvonkm6yinuvk" path="res://Scripts/fases/fase2.gd" id="1_dqttx"]
-[ext_resource type="PackedScene" uid="uid://ogask02mi3ts" path="res://Scenes/Spawner.tscn" id="2_dqttx"]
 [ext_resource type="PackedScene" uid="uid://v5pu5cr770ar" path="res://Scenes/fases/Fase3.tscn" id="2_noa4v"]
-[ext_resource type="PackedScene" uid="uid://gph8vhk0rr33" path="res://Scenes/inimigos/enemy1.tscn" id="3_dqttx"]
+[ext_resource type="Texture2D" uid="uid://br47borawd68t" path="res://Sprites/WhatsApp Image 2025-11-07 at 00.27.47.jpeg" id="3_dqttx"]
 [ext_resource type="PackedScene" uid="uid://blo6oavb3cb2x" path="res://Scenes/player.tscn" id="4_kitht"]
 [ext_resource type="FontFile" uid="uid://dbysrtfs0r7n1" path="res://Dream MMA.ttf" id="5_dqttx"]
 
@@ -15,47 +14,16 @@ font_color = Color(0, 0, 0, 1)
 script = ExtResource("1_dqttx")
 next_scene = ExtResource("2_noa4v")
 
-[node name="Spawner" parent="." instance=ExtResource("2_dqttx")]
-unique_name_in_owner = true
-position = Vector2(589.3705, -32)
-spawn_time = 7.0
-enemy_scene = ExtResource("3_dqttx")
-Erase_Spawner_After = 120.0
-
-[node name="Spawner2" parent="." instance=ExtResource("2_dqttx")]
-unique_name_in_owner = true
-position = Vector2(1280, 320)
-rotation = 1.5707964
-spawn_time = 9.0
-enemy_scene = ExtResource("3_dqttx")
-Erase_Spawner_After = 120.0
-
-[node name="Spawner3" parent="." instance=ExtResource("2_dqttx")]
-unique_name_in_owner = true
-position = Vector2(576, 680)
-rotation = 3.1415927
-spawn_time = 7.0
-enemy_scene = ExtResource("3_dqttx")
-Erase_Spawner_After = 120.0
-
-[node name="Spawner4" parent="." instance=ExtResource("2_dqttx")]
-unique_name_in_owner = true
-position = Vector2(-128, 320)
-rotation = -1.5707964
-spawn_time = 6.0
-enemy_scene = ExtResource("3_dqttx")
-Erase_Spawner_After = 120.0
-
-[node name="Plano de Fundo" type="ColorRect" parent="."]
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(1, 0.6431373, 0.41568628, 1)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(397, 957)
+scale = Vector2(2, 2)
+texture = ExtResource("3_dqttx")
 
 [node name="Player" parent="." instance=ExtResource("4_kitht")]
 position = Vector2(576, 328)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 60.0
+wait_time = 120.0
 autostart = true
 
 [node name="Label" type="Label" parent="."]
@@ -67,4 +35,32 @@ offset_bottom = 167.0
 text = "stage 2 complete! loading next stage..."
 label_settings = SubResource("LabelSettings_selro")
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="Timer_spawner1" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Timer_spawner2" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Marker2D" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(224, -32)
+
+[node name="Marker2D2" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(568, -32)
+
+[node name="Marker2D3" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(840, -32)
+
+[node name="Marker2D4" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(840, 672)
+
+[node name="Marker2D5" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(568, 672)
+
+[node name="Marker2D6" type="Marker2D" parent="." groups=["spawn"]]
+position = Vector2(280, 680)
+
+[connection signal="timeout" from="Timer" to="." method="_on_overworld_timer_timeout"]
+[connection signal="timeout" from="Timer_spawner1" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer_spawner2" to="." method="_on_timer2_timeout"]
