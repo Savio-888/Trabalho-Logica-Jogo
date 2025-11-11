@@ -28,7 +28,8 @@ window/stretch/mode="viewport"
 
 [editor]
 
-movie_writer/movie_file="C:/Users/Sávio/Documents/bullet-hellzin/Gravações/gravacao4.avi"
+movie_writer/movie_file="C:/Users/Sávio/Documents/bullet-hellzin/Gravações/gravacaoapre2.avi"
+movie_writer/disable_vsync=true
 
 [global_group]
 
